@@ -1,0 +1,120 @@
+<!-- Services Page -->
+
+<!-- Hero Section -->
+<section class="bg-teal-50 py-16">
+  <div class="container mx-auto px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <h1 class="text-4xl font-bold text-teal-800 mb-6">Unsere Leistungen</h1>
+      <p class="text-xl text-gray-700 mb-8">
+        Wir bieten professionelle Dienstleistungen für Ihr Haustier, von Verhaltensberatung bis zur liebevollen Betreuung.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Services Overview -->
+<section class="py-16">
+  <div class="container mx-auto px-4">
+    <!-- Service Cards -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+      <div *ngFor="let service of services" class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+        <img [src]="service.image" [alt]="service.title" class="w-full h-64 object-cover">
+        <div class="p-6">
+          <h2 class="text-2xl font-bold text-gray-800 mb-3">{{ service.title }}</h2>
+          <p class="text-gray-600 mb-4">{{ service.description }}</p>
+          <a [href]="'#' + service.id" class="text-teal-600 hover:text-teal-800 font-medium inline-flex items-center">
+            Mehr erfahren
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Detailed Service Sections -->
+<div *ngFor="let service of services; let i = index" [id]="service.id" class="py-16" [ngClass]="{'bg-teal-50': i % 2 === 0}">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Service Info -->
+      <div [ngClass]="{'order-2 lg:order-1': i % 2 === 0, 'order-2': i % 2 !== 0}">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">{{ service.title }}</h2>
+        <p class="text-gray-600 mb-6">{{ service.description }}</p>
+
+        <!-- Features List -->
+        <h3 class="text-xl font-bold text-teal-600 mb-4">Was wir bieten:</h3>
+        <ul class="mb-8">
+          <li *ngFor="let feature of service.features" class="flex items-start mb-3">
+            <svg class="h-6 w-6 text-teal-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span class="text-gray-700">{{ feature }}</span>
+          </li>
+        </ul>
+
+        <!-- Pricing Cards -->
+        <h3 class="text-xl font-bold text-teal-600 mb-4">Preise:</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div *ngFor="let price of service.pricing" class="bg-white p-4 rounded-lg shadow-md">
+            <h4 class="text-lg font-bold text-gray-800 mb-2">{{ price.title }}</h4>
+            <p class="text-2xl font-bold text-teal-600 mb-2">{{ price.price }}</p>
+            <p class="text-sm text-gray-600">{{ price.description }}</p>
+          </div>
+        </div>
+
+        <!-- CTA Button -->
+        <a routerLink="/contact" class="inline-block bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 mt-4">
+          Termin vereinbaren
+        </a>
+      </div>
+
+      <!-- Service Image -->
+      <div [ngClass]="{'order-1 lg:order-2': i % 2 === 0, 'order-1': i % 2 !== 0}" class="rounded-lg overflow-hidden shadow-xl">
+        <img [src]="service.image" [alt]="service.title" class="w-full h-auto">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Testimonials Section -->
+<section class="py-16 bg-teal-50">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Was unsere Kunden sagen</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div *ngFor="let testimonial of testimonials" class="bg-white rounded-lg shadow p-6">
+        <p class="text-gray-600 italic mb-4">"{{ testimonial.text }}"</p>
+        <div class="flex items-center">
+          <div class="ml-3">
+            <p class="text-gray-800 font-bold">{{ testimonial.author }}</p>
+            <p class="text-teal-600">{{ testimonial.service }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-16">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Häufig gestellte Fragen</h2>
+
+    <div class="max-w-3xl mx-auto">
+      <div *ngFor="let faq of faqs" class="mb-6 border-b border-gray-200 pb-6 last:border-b-0 last:pb-0">
+        <h3 class="text-xl font-bold text-gray-800 mb-2">{{ faq.question }}</h3>
+        <p class="text-gray-600">{{ faq.answer }}</p>
+      </div>
+    </div>
+
+    <!-- Contact CTA -->
+    <div class="text-center mt-12">
+      <p class="text-xl text-gray-700 mb-6">Haben Sie weitere Fragen? Kontaktieren Sie uns!</p>
+      <a routerLink="/contact" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300">
+        Kontakt aufnehmen
+      </a>
+    </div>
+  </div>
+</section>

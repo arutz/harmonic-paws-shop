@@ -1,0 +1,247 @@
+<!-- Datenschutz Page -->
+
+<!-- Hero Section -->
+<section class="bg-teal-50 py-16">
+  <div class="container mx-auto px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <h1 class="text-4xl font-bold text-teal-800 mb-6">Datenschutzerklärung</h1>
+      <p class="text-xl text-gray-700 mb-8">
+        Informationen zum Datenschutz gemäß DSGVO
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Datenschutz Content -->
+<section class="py-16">
+  <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
+
+      <!-- Introduction -->
+      <div class="mb-10">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Allgemeine Informationen</h2>
+
+        <p class="text-gray-600 mb-4">
+          Der Schutz Ihrer persönlichen Daten ist uns ein wichtiges Anliegen. In dieser Datenschutzerklärung informieren wir Sie über die Erhebung, Verarbeitung und Nutzung Ihrer Daten bei der Nutzung unserer Website.
+        </p>
+
+        <p class="text-gray-600 mb-4">
+          Die Verarbeitung Ihrer personenbezogenen Daten erfolgt im Einklang mit der Datenschutz-Grundverordnung (DSGVO) und dem Bundesdatenschutzgesetz (BDSG).
+        </p>
+      </div>
+
+      <!-- Responsible Entity -->
+      <div class="mb-10">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Verantwortliche Stelle</h2>
+
+        <div class="mb-4">
+          <p class="text-gray-600">{{ companyInfo.name }}</p>
+          <p class="text-gray-600">{{ companyInfo.owner }}</p>
+          <p class="text-gray-600">{{ companyInfo.address.street }}</p>
+          <p class="text-gray-600">{{ companyInfo.address.zip }} {{ companyInfo.address.city }}</p>
+          <p class="text-gray-600">{{ companyInfo.address.country }}</p>
+          <p class="text-gray-600">Telefon: {{ companyInfo.contact.phone }}</p>
+          <p class="text-gray-600">E-Mail: {{ companyInfo.contact.email }}</p>
+        </div>
+      </div>
+
+      <!-- Data Protection Officer -->
+      <div class="mb-10">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Datenschutzbeauftragter</h2>
+
+        <div class="mb-4">
+          <p class="text-gray-600">{{ dataProtectionOfficer.name }}</p>
+          <p class="text-gray-600">{{ dataProtectionOfficer.company }}</p>
+          <p class="text-gray-600">{{ dataProtectionOfficer.address.street }}</p>
+          <p class="text-gray-600">{{ dataProtectionOfficer.address.zip }} {{ dataProtectionOfficer.address.city }}</p>
+          <p class="text-gray-600">{{ dataProtectionOfficer.address.country }}</p>
+          <p class="text-gray-600">E-Mail: {{ dataProtectionOfficer.contact.email }}</p>
+        </div>
+      </div>
+
+      <!-- Data Collection -->
+      <div class="mb-10">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Erhebung und Verarbeitung personenbezogener Daten</h2>
+
+        <div class="mb-6">
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Beim Besuch unserer Website</h3>
+          <p class="text-gray-600 mb-4">
+            Beim Besuch unserer Website werden automatisch Informationen durch Ihren Browser an den Server unserer Website gesendet. Diese Informationen werden temporär in einem sogenannten Logfile gespeichert. Folgende Informationen werden dabei ohne Ihr Zutun erfasst und bis zur automatisierten Löschung gespeichert:
+          </p>
+          <ul class="list-disc list-inside text-gray-600 mb-4">
+            <li>IP-Adresse des anfragenden Rechners</li>
+            <li>Datum und Uhrzeit des Zugriffs</li>
+            <li>Name und URL der abgerufenen Datei</li>
+            <li>Website, von der aus der Zugriff erfolgt (Referrer-URL)</li>
+            <li>Verwendeter Browser und ggf. das Betriebssystem Ihres Rechners sowie der Name Ihres Access-Providers</li>
+          </ul>
+          <p class="text-gray-600">
+            Die genannten Daten werden durch uns zu folgenden Zwecken verarbeitet:
+          </p>
+          <ul class="list-disc list-inside text-gray-600">
+            <li>Gewährleistung eines reibungslosen Verbindungsaufbaus der Website</li>
+            <li>Gewährleistung einer komfortablen Nutzung unserer Website</li>
+            <li>Auswertung der Systemsicherheit und -stabilität</li>
+            <li>Zu weiteren administrativen Zwecken</li>
+          </ul>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Bei Nutzung unseres Kontaktformulars</h3>
+          <p class="text-gray-600 mb-4">
+            Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.
+          </p>
+          <p class="text-gray-600">
+            Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf unserem berechtigten Interesse an der effektiven Bearbeitung der an uns gerichteten Anfragen (Art. 6 Abs. 1 lit. f DSGVO) oder auf Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO).
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Bei Buchung von Terminen</h3>
+          <p class="text-gray-600 mb-4">
+            Wenn Sie über unsere Website Termine buchen, erheben wir die für die Terminvereinbarung und -durchführung notwendigen Daten. Diese umfassen in der Regel Ihren Namen, Ihre Kontaktdaten, Informationen zu Ihrem Haustier und den gewünschten Termin.
+          </p>
+          <p class="text-gray-600">
+            Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, da sie zur Erfüllung eines Vertrags oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist.
+          </p>
+        </div>
+      </div>
+
+      <!-- Cookies -->
+      <div class="mb-10">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Cookies und Tracking</h2>
+
+        <p class="text-gray-600 mb-4">
+          Unsere Website verwendet Cookies. Cookies sind kleine Textdateien, die auf Ihrem Endgerät gespeichert werden. Sie richten keinen Schaden an und enthalten keine Viren. Cookies dienen dazu, unser Angebot nutzerfreundlicher, effektiver und sicherer zu machen.
+        </p>
+
+        <div class="mb-6">
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Essentielle Cookies</h3>
+          <p class="text-gray-600 mb-4">
+            Diese Cookies sind für den Betrieb der Website notwendig und können in unseren Systemen nicht abgeschaltet werden.
+          </p>
+          <div class="overflow-x-auto">
+            <table class="min-w-full bg-white border border-gray-200">
+              <thead>
+                <tr>
+                  <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                  <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Zweck</th>
+                  <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Dauer</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (cookie of cookiesInfo.essential; track cookie.name) {
+                  <td class="py-2 px-4 border-b border-gray-200 text-sm">{{ cookie.name }}</td>
+                  <td class="py-2 px-4 border-b border-gray-200 text-sm">{{ cookie.purpose }}</td>
+                  <td class="py-2 px-4 border-b border-gray-200 text-sm">{{ cookie.duration }}</td>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Funktionale Cookies</h3>
+          <p class="text-gray-600 mb-4">
+            Diese Cookies ermöglichen verbesserte Funktionalität und Personalisierung.
+          </p>
+          <div class="overflow-x-auto">
+            <table class="min-w-full bg-white border border-gray-200">
+              <thead>
+                <tr>
+                  <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                  <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Zweck</th>
+                  <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Dauer</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (cookie of cookiesInfo.functional; track cookie.name) {
+                  <td class="py-2 px-4 border-b border-gray-200 text-sm">{{ cookie.name }}</td>
+                  <td class="py-2 px-4 border-b border-gray-200 text-sm">{{ cookie.purpose }}</td>
+                  <td class="py-2 px-4 border-b border-gray-200 text-sm">{{ cookie.duration }}</td>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Analyse-Cookies</h3>
+          <p class="text-gray-600 mb-4">
+            Diese Cookies helfen uns zu verstehen, wie Besucher mit unserer Website interagieren.
+          </p>
+          <div class="overflow-x-auto">
+            <table class="min-w-full bg-white border border-gray-200">
+              <thead>
+                <tr>
+                  <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                  <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Zweck</th>
+                  <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Dauer</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  @for (cookie of cookiesInfo.analytics; track cookie.name) {
+                    <td class="py-2 px-4 border-b border-gray-200 text-sm">{{ cookie.name }}</td>
+                    <td class="py-2 px-4 border-b border-gray-200 text-sm">{{ cookie.purpose }}</td>
+                    <td class="py-2 px-4 border-b border-gray-200 text-sm">{{ cookie.duration }}</td>
+                  }
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Third-party Services -->
+      <div class="mb-10">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Dienste von Drittanbietern</h2>
+
+        <div class="mb-6 last:mb-0">
+          @for (service of thirdPartyServices; track service.name) {
+            <h3 class="text-xl font-bold text-gray-800 mb-2">{{ service.name }}</h3>
+            <p class="text-gray-600 mb-2">Anbieter: {{ service.provider }}</p>
+            <p class="text-gray-600 mb-2">Zweck: {{ service.purpose }}</p>
+            <p class="text-gray-600 mb-2">Erhobene Daten: {{ service.dataCollected }}</p>
+            <p class="text-gray-600">
+              Weitere Informationen finden Sie in der
+              <a href="{{ service.privacyPolicy }}" target="_blank" rel="noopener noreferrer" class="text-teal-600 hover:text-teal-800">
+                Datenschutzerklärung des Anbieters
+              </a>.
+            </p>
+          }
+        </div>
+      </div>
+
+      <!-- User Rights -->
+      <div class="mb-10">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Ihre Rechte</h2>
+
+        <p class="text-gray-600 mb-4">
+          Als betroffene Person haben Sie folgende Rechte:
+        </p>
+
+
+        <ul class="list-disc list-inside text-gray-600 mb-4">
+          @for (right of userRights; track right) {
+            <li>{{ right }}</li>
+          }
+        </ul>
+
+        <p class="text-gray-600">
+          Wenn Sie Fragen zum Datenschutz haben oder eines Ihrer Rechte ausüben möchten, kontaktieren Sie uns bitte unter den oben angegebenen Kontaktdaten.
+        </p>
+      </div>
+
+      <!-- Updates -->
+      <div>
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Aktualität und Änderung dieser Datenschutzerklärung</h2>
+
+        <p class="text-gray-600">
+          Diese Datenschutzerklärung ist aktuell gültig und hat den Stand Mai 2023. Wir behalten uns vor, diese Datenschutzerklärung gelegentlich anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entspricht oder um Änderungen unserer Leistungen in der Datenschutzerklärung umzusetzen, z.B. bei der Einführung neuer Services. Für Ihren erneuten Besuch gilt dann die neue Datenschutzerklärung.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,14 @@
+/* Custom styles for services component */
+/* Most styling is handled by Tailwind CSS classes in the template */
+
+/* Add any custom styles that can't be handled by Tailwind here */
+
+/* Smooth scroll behavior for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom styling for service cards on hover */
+.service-card:hover {
+  transform: translateY(-5px);
+}

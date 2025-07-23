@@ -1,0 +1,98 @@
+<header class="bg-teal-600 text-white shadow-md">
+  <div class="container mx-auto px-4 py-4">
+    <div class="flex justify-between items-center">
+      <!-- Logo and Brand Name -->
+      <div class="flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+        </svg>
+        <span class="text-xl font-bold">Harmonic Paws</span>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden focus:outline-none" type="button" (click)="mobileMenuOpen = !mobileMenuOpen">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex space-x-6">
+        @for (item of navItems; track item.path) {
+          <a
+            [routerLink]="item.path"
+            [routerLinkActiveOptions]="{exact: item.exact ?? false}"
+            routerLinkActive="font-bold border-b-2 border-white"
+            class="hover:text-teal-200 transition-colors duration-200"
+          >
+            {{ item.label }}
+          </a>
+        }
+        <!-- Auth buttons for non-authenticated users -->
+        <div *ngIf="!authService.isLoggedIn" class="flex space-x-2">
+          <a routerLink="/auth/login" class="bg-white text-teal-600 px-4 py-2 rounded-md hover:bg-teal-100 transition-colors duration-200">
+            Login
+          </a>
+          <a routerLink="/auth/register" class="bg-teal-700 text-white px-4 py-2 rounded-md hover:bg-teal-800 transition-colors duration-200">
+            Registrieren
+          </a>
+        </div>
+
+        <!-- User menu for authenticated users -->
+        <div *ngIf="authService.isLoggedIn" class="relative">
+          <button class="flex items-center space-x-2 bg-white text-teal-600 px-4 py-2 rounded-md hover:bg-teal-100 transition-colors duration-200">
+            <span>{{ authService.currentUserValue?.displayName || 'Benutzer' }}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </button>
+
+          <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10">
+            <a routerLink="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-50">Profil</a>
+            <a routerLink="/calendar" class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-50">Meine Termine</a>
+            <button (click)="logout()" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-teal-50">Abmelden</button>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="md:hidden" [ngClass]="{'hidden': !mobileMenuOpen}">
+      <nav class="flex flex-col space-y-4 mt-4">
+        @for (item of navItems; track item.path) {
+          <a
+            [routerLink]="item.path"
+            [routerLinkActiveOptions]="{exact: item.exact ?? false}"
+            routerLinkActive="font-bold"
+            class="hover:text-teal-200 transition-colors duration-200"
+          >
+            {{ item.label }}
+          </a>
+        }
+        <!-- Auth buttons for non-authenticated users -->
+        <div *ngIf="!authService.isLoggedIn" class="flex flex-col space-y-2">
+          <a routerLink="/auth/login" class="bg-white text-teal-600 px-4 py-2 rounded-md hover:bg-teal-100 transition-colors duration-200 text-center">
+            Login
+          </a>
+          <a routerLink="/auth/register" class="bg-teal-700 text-white px-4 py-2 rounded-md hover:bg-teal-800 transition-colors duration-200 text-center">
+            Registrieren
+          </a>
+        </div>
+
+        <!-- User menu for authenticated users -->
+        <div *ngIf="authService.isLoggedIn" class="flex flex-col space-y-2">
+          <span class="text-white font-medium">{{ authService.currentUserValue?.displayName || 'Benutzer' }}</span>
+          <a routerLink="/profile" class="bg-white text-teal-600 px-4 py-2 rounded-md hover:bg-teal-100 transition-colors duration-200 text-center">
+            Profil
+          </a>
+          <a routerLink="/calendar" class="bg-white text-teal-600 px-4 py-2 rounded-md hover:bg-teal-100 transition-colors duration-200 text-center">
+            Meine Termine
+          </a>
+          <button (click)="logout()" class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition-colors duration-200 text-center">
+            Abmelden
+          </button>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>

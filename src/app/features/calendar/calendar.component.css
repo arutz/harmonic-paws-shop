@@ -1,0 +1,21 @@
+/* Custom styles for calendar component */
+/* Most styling is handled by Tailwind CSS classes in the template */
+
+/* Add any custom styles that can't be handled by Tailwind here */
+
+/* Custom styling for calendar days */
+.calendar-day {
+  transition: background-color 0.2s ease;
+}
+
+/* Custom styling for time slots */
+.time-slot {
+  transition: all 0.2s ease;
+}
+
+/* Custom styling for form inputs focus state */
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(13, 148, 136, 0.2);
+  border-color: #0d9488;
+}

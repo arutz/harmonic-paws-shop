@@ -1,0 +1,95 @@
+<!-- Impressum Page -->
+
+<!-- Hero Section -->
+<section class="bg-teal-50 py-16">
+  <div class="container mx-auto px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <h1 class="text-4xl font-bold text-teal-800 mb-6">Impressum</h1>
+      <p class="text-xl text-gray-700 mb-8">
+        Informationen gemäß § 5 TMG
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Impressum Content -->
+<section class="py-16">
+  <div class="container mx-auto px-4">
+    <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-8">
+
+      <!-- Company Information -->
+      <div class="mb-10">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Angaben gemäß § 5 TMG</h2>
+
+        <div class="mb-6">
+          <h3 class="text-xl font-bold text-gray-800 mb-2">{{ companyInfo.name }}</h3>
+          <p class="text-gray-600">{{ companyInfo.owner }}</p>
+          <p class="text-gray-600">{{ companyInfo.address.street }}</p>
+          <p class="text-gray-600">{{ companyInfo.address.zip }} {{ companyInfo.address.city }}</p>
+          <p class="text-gray-600">{{ companyInfo.address.country }}</p>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Kontakt</h3>
+          <p class="text-gray-600">Telefon: {{ companyInfo.contact.phone }}</p>
+          <p class="text-gray-600">E-Mail: {{ companyInfo.contact.email }}</p>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Rechtliche Angaben</h3>
+          <p class="text-gray-600">Umsatzsteuer-ID: {{ companyInfo.legal.taxId }}</p>
+          <p class="text-gray-600">Registergericht: {{ companyInfo.legal.registerCourt }}</p>
+          <p class="text-gray-600">Registernummer: {{ companyInfo.legal.registerNumber }}</p>
+        </div>
+      </div>
+
+      <!-- Responsible Person -->
+      <div class="mb-10">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+
+        <div>
+          <p class="text-gray-600">{{ responsiblePerson.name }}</p>
+          <p class="text-gray-600">{{ responsiblePerson.address.street }}</p>
+          <p class="text-gray-600">{{ responsiblePerson.address.zip }} {{ responsiblePerson.address.city }}</p>
+          <p class="text-gray-600">{{ responsiblePerson.address.country }}</p>
+        </div>
+      </div>
+
+      <!-- Disclaimer -->
+      <div class="mb-10">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Haftungsausschluss</h2>
+
+        <div class="mb-6">
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Haftung für Inhalte</h3>
+          <p class="text-gray-600 mb-4">
+            Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+          </p>
+          <p class="text-gray-600">
+            Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
+          </p>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Haftung für Links</h3>
+          <p class="text-gray-600">
+            Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar.
+          </p>
+          <p class="text-gray-600">
+            Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Urheberrecht</h3>
+          <p class="text-gray-600 mb-4">
+            Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.
+          </p>
+          <p class="text-gray-600">
+            Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

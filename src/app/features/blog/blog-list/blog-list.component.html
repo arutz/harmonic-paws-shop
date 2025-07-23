@@ -1,0 +1,81 @@
+<!-- Blog List Page -->
+
+<!-- Hero Section -->
+<section class="bg-teal-50 py-16">
+  <div class="container mx-auto px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <h1 class="text-4xl font-bold text-teal-800 mb-6">Unser Blog</h1>
+      <p class="text-xl text-gray-700 mb-8">
+        Tipps, Ratschläge und Geschichten rund um Haustiere und Tierpsychologie
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Blog Posts Grid -->
+<section class="py-16">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Blog Post Card -->
+      <article *ngFor="let post of blogPosts" class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+        <!-- Post Image -->
+        <div class="relative h-48 overflow-hidden">
+          <img [src]="post.image" [alt]="post.title" class="w-full h-full object-cover">
+        </div>
+
+        <!-- Post Content -->
+        <div class="p-6">
+          <div class="flex items-center text-sm text-gray-500 mb-2">
+            <span>{{ post.date | date:'dd.MM.yyyy' }}</span>
+            <span class="mx-2">•</span>
+            <span>{{ post.author }}</span>
+          </div>
+
+          <h2 class="text-xl font-bold text-gray-800 mb-3 hover:text-teal-600 transition-colors duration-200">
+            <a [routerLink]="['/blog', post.id]">{{ post.title }}</a>
+          </h2>
+
+          <p class="text-gray-600 mb-4">{{ post.excerpt }}</p>
+
+          <a [routerLink]="['/blog', post.id]" class="inline-flex items-center text-teal-600 hover:text-teal-800 font-medium">
+            Weiterlesen
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter Signup -->
+<section class="bg-teal-50 py-16">
+  <div class="container mx-auto px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-bold text-gray-800 mb-6">Bleiben Sie auf dem Laufenden</h2>
+      <p class="text-xl text-gray-600 mb-8">
+        Abonnieren Sie unseren Newsletter und erhalten Sie regelmäßig Tipps und Neuigkeiten rund um Haustiere.
+      </p>
+
+      <form class="flex flex-col sm:flex-row gap-4 justify-center">
+        <input
+          type="email"
+          placeholder="Ihre E-Mail-Adresse"
+          class="px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+          required
+        >
+        <button
+          type="submit"
+          class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300"
+        >
+          Abonnieren
+        </button>
+      </form>
+
+      <p class="text-sm text-gray-500 mt-4">
+        Wir respektieren Ihre Privatsphäre. Sie können sich jederzeit abmelden.
+      </p>
+    </div>
+  </div>
+</section>

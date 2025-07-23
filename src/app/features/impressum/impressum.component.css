@@ -1,0 +1,36 @@
+/* Custom styles for impressum component */
+/* Most styling is handled by Tailwind CSS classes in the template */
+
+/* Add any custom styles that can't be handled by Tailwind here */
+
+/* Custom styling for legal text sections */
+.legal-section {
+  margin-bottom: 2rem;
+}
+
+/* Print styles for impressum page */
+@media print {
+  body {
+    font-size: 12pt;
+    color: #000;
+    background-color: #fff;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .shadow-lg {
+    box-shadow: none !important;
+  }
+
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+}

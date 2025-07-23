@@ -1,0 +1,233 @@
+<!-- Blog Detail Page -->
+
+<!-- Hero Section -->
+<section class="bg-teal-50 py-12">
+  <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto">
+      <!-- Back to Blog Link -->
+      <div class="mb-6">
+        <a routerLink="/blog" class="inline-flex items-center text-teal-600 hover:text-teal-800 font-medium">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+          </svg>
+          Zurück zur Blogübersicht
+        </a>
+      </div>
+
+      <!-- Blog Post Title -->
+      <h1 class="text-4xl font-bold text-teal-800 mb-4">{{ blogPost?.title }}</h1>
+
+      <!-- Post Meta Information -->
+      <div class="flex items-center text-gray-500 mb-8">
+        <span>{{ blogPost?.date | date:'dd.MM.yyyy' }}</span>
+        <span class="mx-2">•</span>
+        <span>{{ blogPost?.author }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Blog Post Content -->
+<section class="py-12">
+  <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto">
+      <!-- Featured Image -->
+      <div class="mb-10 rounded-lg overflow-hidden shadow-lg">
+        <img [src]="blogPost?.image" [alt]="blogPost?.title" class="w-full h-auto">
+      </div>
+
+      <!-- Post Content -->
+      <div class="prose prose-lg max-w-none">
+        <p class="text-gray-700 leading-relaxed mb-6">{{ blogPost?.content }}</p>
+
+        <!-- Example of formatted content - in a real app, this would be rendered from HTML or Markdown -->
+        <h2 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Warum ist dieses Thema wichtig?</h2>
+        <p class="text-gray-700 leading-relaxed mb-6">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+
+        <h2 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Praktische Tipps</h2>
+        <ul class="list-disc list-inside text-gray-700 mb-6">
+          <li class="mb-2">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</li>
+          <li class="mb-2">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+          <li class="mb-2">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+        </ul>
+
+        <blockquote class="border-l-4 border-teal-500 pl-4 italic text-gray-600 my-6">
+          "Die Beziehung zwischen Mensch und Tier ist eine der wertvollsten Verbindungen, die wir erleben können. Sie lehrt uns Geduld, Empathie und bedingungslose Liebe."
+        </blockquote>
+
+        <p class="text-gray-700 leading-relaxed">
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </div>
+
+      <!-- Author Information -->
+      <div class="mt-12 p-6 bg-gray-50 rounded-lg">
+        <div class="flex items-center">
+          <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
+            <img src="assets/images/author-avatar.jpg" alt="Author" class="w-full h-full object-cover">
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-gray-800">{{ blogPost?.author }}</h3>
+            <p class="text-gray-600">Tierpsychologin & Gründerin</p>
+          </div>
+        </div>
+        <p class="text-gray-700 mt-4">
+          Anna ist zertifizierte Tierpsychologin mit über 10 Jahren Erfahrung in der Arbeit mit Haustieren. Ihre Leidenschaft ist es, Tierbesitzern zu helfen, eine bessere Beziehung zu ihren pelzigen Freunden aufzubauen.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Related Posts -->
+<section class="py-12 bg-teal-50">
+  <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold text-gray-800 mb-8">Das könnte Sie auch interessieren</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Related Post Cards (3) -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+          <div class="h-40 overflow-hidden">
+            <img src="assets/images/blog-2.jpg" alt="Related Post" class="w-full h-full object-cover">
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-bold text-gray-800 mb-2 hover:text-teal-600 transition-colors duration-200">
+              <a routerLink="/blog/2">Die besten Spielzeuge für die geistige Anregung Ihres Hundes</a>
+            </h3>
+            <a routerLink="/blog/2" class="text-sm text-teal-600 hover:text-teal-800 font-medium">Weiterlesen</a>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+          <div class="h-40 overflow-hidden">
+            <img src="assets/images/blog-3.jpg" alt="Related Post" class="w-full h-full object-cover">
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-bold text-gray-800 mb-2 hover:text-teal-600 transition-colors duration-200">
+              <a routerLink="/blog/3">Ernährungstipps für ältere Katzen</a>
+            </h3>
+            <a routerLink="/blog/3" class="text-sm text-teal-600 hover:text-teal-800 font-medium">Weiterlesen</a>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+          <div class="h-40 overflow-hidden">
+            <img src="assets/images/blog-4.jpg" alt="Related Post" class="w-full h-full object-cover">
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-bold text-gray-800 mb-2 hover:text-teal-600 transition-colors duration-200">
+              <a routerLink="/blog/4">Wie man Trennungsangst bei Hunden bewältigt</a>
+            </h3>
+            <a routerLink="/blog/4" class="text-sm text-teal-600 hover:text-teal-800 font-medium">Weiterlesen</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Comment Section -->
+<section class="py-12">
+  <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold text-gray-800 mb-8">Kommentare</h2>
+
+      <!-- Comment Form -->
+      <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <h3 class="text-xl font-bold text-gray-800 mb-4">Hinterlassen Sie einen Kommentar</h3>
+
+        <form>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label for="name" class="block text-gray-700 mb-2">Name *</label>
+              <input
+                type="text"
+                id="name"
+                class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                required
+              >
+            </div>
+            <div>
+              <label for="email" class="block text-gray-700 mb-2">E-Mail * (wird nicht veröffentlicht)</label>
+              <input
+                type="email"
+                id="email"
+                class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                required
+              >
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <label for="comment" class="block text-gray-700 mb-2">Kommentar *</label>
+            <textarea
+              id="comment"
+              rows="5"
+              class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+              required
+            ></textarea>
+          </div>
+
+          <div class="mb-4">
+            <label class="flex items-center">
+              <input type="checkbox" class="form-checkbox h-5 w-5 text-teal-600">
+              <span class="ml-2 text-gray-700">Ich stimme der Speicherung meiner Daten gemäß der <a routerLink="/datenschutz" class="text-teal-600 hover:text-teal-800">Datenschutzerklärung</a> zu.</span>
+            </label>
+          </div>
+
+          <button
+            type="submit"
+            class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-6 rounded-lg transition-colors duration-300"
+          >
+            Kommentar absenden
+          </button>
+        </form>
+      </div>
+
+      <!-- Example Comments -->
+      <div class="space-y-6">
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <h4 class="text-lg font-bold text-gray-800">Sabine Wagner</h4>
+              <p class="text-sm text-gray-500">15. Juni 2023</p>
+            </div>
+            <button class="text-teal-600 hover:text-teal-800 text-sm font-medium">Antworten</button>
+          </div>
+          <p class="text-gray-700">
+            Vielen Dank für diesen informativen Artikel! Die Tipps haben mir sehr geholfen, das Verhalten meiner Katze besser zu verstehen.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 ml-12">
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <h4 class="text-lg font-bold text-gray-800">Anna Müller</h4>
+              <p class="text-sm text-gray-500">16. Juni 2023</p>
+            </div>
+            <button class="text-teal-600 hover:text-teal-800 text-sm font-medium">Antworten</button>
+          </div>
+          <p class="text-gray-700">
+            Danke für Ihr Feedback, Sabine! Es freut mich, dass die Tipps hilfreich waren. Bei weiteren Fragen stehe ich gerne zur Verfügung.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <h4 class="text-lg font-bold text-gray-800">Michael Becker</h4>
+              <p class="text-sm text-gray-500">18. Juni 2023</p>
+            </div>
+            <button class="text-teal-600 hover:text-teal-800 text-sm font-medium">Antworten</button>
+          </div>
+          <p class="text-gray-700">
+            Ich habe einige der Methoden ausprobiert und bin erstaunt, wie schnell mein Hund darauf reagiert hat. Besonders der Tipp mit dem positiven Verstärken hat Wunder gewirkt!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

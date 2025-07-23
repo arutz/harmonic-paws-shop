@@ -1,0 +1,17 @@
+/* Custom styles for blog-detail component */
+/* Most styling is handled by Tailwind CSS classes in the template */
+
+/* Additional styling for the blog content */
+.prose h2 {
+  color: #0f766e; /* teal-700 */
+}
+
+.prose blockquote {
+  color: #4b5563; /* gray-600 */
+}
+
+/* Styling for comment form focus states */
+textarea:focus, input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.3); /* teal-500 with opacity */
+}

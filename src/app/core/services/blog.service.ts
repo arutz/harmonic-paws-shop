@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable, of, throwError} from 'rxjs';
+import {Observable, from, of, throwError} from 'rxjs';
+import {map, catchError} from 'rxjs/operators';
 import {environment} from '../../../environments/environment';
+import {PocketBaseService} from './pocketbase.service';
 
 export interface BlogPost {
   id: string;
@@ -23,162 +24,72 @@ export interface BlogPost {
   providedIn: 'root'
 })
 export class BlogService {
-  private apiUrl = environment.apiUrl + '/collections/blog_posts/records';
-
-  // Mock data for development until backend is set up
-  private mockPosts: BlogPost[] = [
-    {
-      id: '1',
-      title: 'Wie Sie Stressanzeichen bei Ihrer Katze erkennen können',
-      excerpt: 'Katzen sind Meister darin, ihre Gefühle zu verbergen. Hier sind einige subtile Anzeichen, die darauf hindeuten könnten, dass Ihre Katze gestresst ist.',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      image: 'assets/images/blog-1.jpg',
-      created: new Date(2023, 5, 15),
-      updated: new Date(2023, 5, 15),
-      published: true,
-      author: {
-        id: '1',
-        name: 'Anna Müller'
-      },
-      tags: ['Katzen', 'Verhalten', 'Stress']
-    },
-    {
-      id: '2',
-      title: 'Die besten Spielzeuge für die geistige Anregung Ihres Hundes',
-      excerpt: 'Geistige Stimulation ist für Hunde genauso wichtig wie körperliche Bewegung. Entdecken Sie die besten Spielzeuge, um den Geist Ihres Hundes aktiv zu halten.',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      image: 'assets/images/blog-2.jpg',
-      created: new Date(2023, 6, 22),
-      updated: new Date(2023, 6, 22),
-      published: true,
-      author: {
-        id: '2',
-        name: 'Max Schmidt'
-      },
-      tags: ['Hunde', 'Spielzeug', 'Training']
-    },
-    {
-      id: '3',
-      title: 'Ernährungstipps für ältere Katzen',
-      excerpt: 'Mit zunehmendem Alter ändern sich die Ernährungsbedürfnisse Ihrer Katze. Hier sind einige Tipps, wie Sie die Ernährung Ihrer älteren Katze anpassen können.',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      image: 'assets/images/blog-3.jpg',
-      created: new Date(2023, 7, 10),
-      updated: new Date(2023, 7, 10),
-      published: true,
-      author: {
-        id: '3',
-        name: 'Laura Weber'
-      },
-      tags: ['Katzen', 'Ernährung', 'Senioren']
-    }
-  ];
-
-  constructor(private http: HttpClient) { }
+  constructor(private pocketbaseService: PocketBaseService) { }
 
   // Get all published blog posts
   getAllPosts(): Observable<BlogPost[]> {
-    // When backend is ready, uncomment this code
-    // return this.http.get<any>(`${this.apiUrl}?filter=(published=true)&sort=-created`)
-    //   .pipe(
-    //     map(response => this.mapResponseToBlogPosts(response)),
-    //     catchError(error => {
-    //       console.error('Error fetching blog posts', error);
-    //       return throwError(() => new Error('Failed to fetch blog posts'));
-    //     })
-    //   );
-
-    // For now, return mock data
-    return of(this.mockPosts);
+    return from(this.pocketbaseService.client.collection('blog_posts').getList(1, 50, {
+      filter: 'published = true',
+      sort: '-created',
+      expand: 'author'
+    }))
+      .pipe(
+        map(response => this.mapResponseToBlogPosts(response)),
+        catchError(error => {
+          console.error('Error fetching blog posts', error);
+          return throwError(() => new Error('Failed to fetch blog posts'));
+        })
+      );
   }
 
   // Get a single blog post by ID
   getPostById(id: string): Observable<BlogPost> {
-    // When backend is ready, uncomment this code
-    // return this.http.get<any>(`${this.apiUrl}/${id}`)
-    //   .pipe(
-    //     map(response => this.mapResponseToBlogPost(response)),
-    //     catchError(error => {
-    //       console.error(`Error fetching blog post with id ${id}`, error);
-    //       return throwError(() => new Error('Failed to fetch blog post'));
-    //     })
-    //   );
-
-    // For now, return mock data
-    const post = this.mockPosts.find(p => p.id === id);
-    if (post) {
-      return of(post);
-    }
-    return throwError(() => new Error('Blog post not found'));
+    return from(this.pocketbaseService.client.collection('blog_posts').getOne(id, {
+      expand: 'author'
+    }))
+      .pipe(
+        map(response => this.mapResponseToBlogPost(response)),
+        catchError(error => {
+          console.error(`Error fetching blog post with id ${id}`, error);
+          return throwError(() => new Error('Failed to fetch blog post'));
+        })
+      );
   }
 
   // Create a new blog post (admin only)
   createPost(post: Omit<BlogPost, 'id' | 'created' | 'updated'>): Observable<BlogPost> {
-    // When backend is ready, uncomment this code
-    // return this.http.post<any>(this.apiUrl, post)
-    //   .pipe(
-    //     map(response => this.mapResponseToBlogPost(response)),
-    //     catchError(error => {
-    //       console.error('Error creating blog post', error);
-    //       return throwError(() => new Error('Failed to create blog post'));
-    //     })
-    //   );
-
-    // For now, simulate creation with mock data
-    const newPost: BlogPost = {
-      ...post as any,
-      id: (this.mockPosts.length + 1).toString(),
-      created: new Date(),
-      updated: new Date()
-    };
-    this.mockPosts.push(newPost);
-    return of(newPost);
+    return from(this.pocketbaseService.client.collection('blog_posts').create(post))
+      .pipe(
+        map(response => this.mapResponseToBlogPost(response)),
+        catchError(error => {
+          console.error('Error creating blog post', error);
+          return throwError(() => new Error('Failed to create blog post'));
+        })
+      );
   }
 
   // Update an existing blog post (admin only)
   updatePost(id: string, post: Partial<BlogPost>): Observable<BlogPost> {
-    // When backend is ready, uncomment this code
-    // return this.http.patch<any>(`${this.apiUrl}/${id}`, post)
-    //   .pipe(
-    //     map(response => this.mapResponseToBlogPost(response)),
-    //     catchError(error => {
-    //       console.error(`Error updating blog post with id ${id}`, error);
-    //       return throwError(() => new Error('Failed to update blog post'));
-    //     })
-    //   );
-
-    // For now, simulate update with mock data
-    const index = this.mockPosts.findIndex(p => p.id === id);
-    if (index !== -1) {
-      const updatedPost = {
-        ...this.mockPosts[index],
-        ...post,
-        updated: new Date()
-      };
-      this.mockPosts[index] = updatedPost;
-      return of(updatedPost);
-    }
-    return throwError(() => new Error('Blog post not found'));
+    return from(this.pocketbaseService.client.collection('blog_posts').update(id, post))
+      .pipe(
+        map(response => this.mapResponseToBlogPost(response)),
+        catchError(error => {
+          console.error(`Error updating blog post with id ${id}`, error);
+          return throwError(() => new Error('Failed to update blog post'));
+        })
+      );
   }
 
   // Delete a blog post (admin only)
   deletePost(id: string): Observable<void> {
-    // When backend is ready, uncomment this code
-    // return this.http.delete<void>(`${this.apiUrl}/${id}`)
-    //   .pipe(
-    //     catchError(error => {
-    //       console.error(`Error deleting blog post with id ${id}`, error);
-    //       return throwError(() => new Error('Failed to delete blog post'));
-    //     })
-    //   );
-
-    // For now, simulate deletion with mock data
-    const index = this.mockPosts.findIndex(p => p.id === id);
-    if (index !== -1) {
-      this.mockPosts.splice(index, 1);
-      return of(void 0);
-    }
-    return throwError(() => new Error('Blog post not found'));
+    return from(this.pocketbaseService.client.collection('blog_posts').delete(id))
+      .pipe(
+        map(() => void 0),
+        catchError(error => {
+          console.error(`Error deleting blog post with id ${id}`, error);
+          return throwError(() => new Error('Failed to delete blog post'));
+        })
+      );
   }
 
   // Helper method to map PocketBase response to BlogPost objects
@@ -193,7 +104,7 @@ export class BlogService {
       title: item.title,
       content: item.content,
       excerpt: item.excerpt,
-      image: item.image ? `${environment.apiUrl}/files/${item.collectionId}/${item.id}/${item.image}` : '',
+      image: item.image ? `${environment.pocketbaseUrl}/api/files/${item.collectionId}/${item.id}/${item.image}` : '',
       author: {
         id: item.expand?.author?.id || '',
         name: item.expand?.author?.name || 'Unknown'

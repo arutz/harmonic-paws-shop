@@ -1,6 +1,6 @@
 
 
 export const environment = {
-  apiUrl: 'http://localhost:3000',
+  pocketbaseUrl: 'http://localhost:8090',
   production: false,
 }

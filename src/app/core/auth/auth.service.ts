@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, from, of, throwError } from 'rxjs';
+import {BehaviorSubject, Observable, from, of, throwError, lastValueFrom} from 'rxjs';
 import { map, tap, catchError } from 'rxjs/operators';
 import { PocketBaseService } from '../services/pocketbase.service';
 import { environment } from '../../../environments/environment';
@@ -69,10 +69,10 @@ export class AuthService {
           const userData = response.record;
           const user: User = {
             id: userData.id,
-            email: userData.email,
-            displayName: userData.name,
+            email: userData['email'],
+            displayName: userData['name'],
             emailVerified: true,
-            photoURL: userData.avatar ? `${environment.pocketbaseUrl}/api/files/${userData.collectionId}/${userData.id}/${userData.avatar}` : undefined
+            photoURL: userData['avatar'] ? `${environment.pocketbaseUrl}/api/files/${userData.collectionId}/${userData.id}/${userData['avatar']}` : undefined
           };
           return user;
         }),
@@ -84,7 +84,7 @@ export class AuthService {
   }
 
   // Register a new user
-  register(email: string, password: string, name?: string): Observable<User> {
+  register(email: string, password: string, name?: string): Promise<User> {
     const data = {
       email,
       password,
@@ -92,22 +92,7 @@ export class AuthService {
       name: name || email.split('@')[0]
     };
 
-    return from(this.pocketbaseService.client.collection('users').create(data))
-      .pipe(
-        map(userData => {
-          // After registration, log the user in
-          return this.login(email, password).pipe(
-            catchError(error => {
-              console.error('Auto-login after registration failed:', error);
-              return throwError(() => new Error('Registration successful but login failed'));
-            })
-          );
-        }),
-        catchError(error => {
-          console.error('Registration error:', error);
-          return throwError(() => new Error('Registration failed: ' + error.message));
-        })
-      );
+    return this.pocketbaseService.client.collection('users').create(data)
   }
 
   // Logout the current user
@@ -122,7 +107,8 @@ export class AuthService {
       return throwError(() => new Error('User not authenticated'));
     }
 
-    const userId = this.pocketbaseService.client.authStore.model.id;
+    const userId = this.pocketbaseService.client.authStore.record?.id;
+    if (!userId) throw new Error('User not authenticated');
     const updateData: any = {};
 
     if (data.displayName) {

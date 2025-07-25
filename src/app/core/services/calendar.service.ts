@@ -138,17 +138,17 @@ export class CalendarService {
     return from(this.pocketbaseService.client.collection('time_slots').getOne(timeSlotId))
       .pipe(
         switchMap(timeSlot => {
-          if (!timeSlot.available) {
+          if (!timeSlot['available']) {
             return throwError(() => new Error('Time slot is not available'));
           }
 
           // Create the event
-          const startDate = new Date(timeSlot.date);
-          const [startHour, startMinute] = timeSlot.startTime.split(':').map(Number);
+          const startDate = new Date(timeSlot['date']);
+          const [startHour, startMinute] = timeSlot['startTime'].split(':').map(Number);
           startDate.setHours(startHour, startMinute);
 
-          const endDate = new Date(timeSlot.date);
-          const [endHour, endMinute] = timeSlot.endTime.split(':').map(Number);
+          const endDate = new Date(timeSlot['date']);
+          const [endHour, endMinute] = timeSlot['endTime'].split(':').map(Number);
           endDate.setHours(endHour, endMinute);
 
           const event = {
@@ -187,7 +187,7 @@ export class CalendarService {
     return from(this.pocketbaseService.client.collection('calendar_events').getOne(id))
       .pipe(
         switchMap(event => {
-          if (event.user !== userId) {
+          if (event['user'] !== userId) {
             return throwError(() => new Error('You can only update your own events'));
           }
 

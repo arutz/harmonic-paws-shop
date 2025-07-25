@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { Router, RouterLink } from '@angular/router';
 import { NgIf, NgClass } from '@angular/common';
 import { AuthService } from '../../../core/auth/auth.service';
+import {from} from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -65,7 +66,7 @@ export class RegisterComponent {
     this.loading = true;
     this.error = '';
 
-    this.authService.register(this.f['email'].value, this.f['password'].value)
+    from(this.authService.register(this.f['email'].value, this.f['password'].value))
       .subscribe({
         next: () => {
           this.success = true;
